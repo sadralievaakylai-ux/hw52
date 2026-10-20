@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Список задач</h1>
+    <a href="/tasks/add/">Добавить задачу</a>
+    {% for task in tasks %}
+        <div class="task">
+            <p>{{ task.description }}</p>
+            <p>Статус: {{ task.get_status_display }}</p>
+            <p>Дата выполнения: {{ task.due_date|date:"Y-m-d"|default:"Не указана" }}</p>
+            <form action="/tasks/{{ task.id }}/delete/" method="post">
+                {% csrf_token %}
+                <button type="submit">Удалить</button>
+            </form>
+        </div>
+    {% empty %}
+        <p>Задач пока нет.</p>
+    {% endfor %}
+</body>
+</html>

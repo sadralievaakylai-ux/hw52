@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #edf5ee;
+    color: #222222;
+    margin: 30px;
+}
+
+.task {
+    background: white;
+    padding: 15px;
+    margin-top: 15px;
+    border: 1px solid #cccccc;
+}
+
+input, textarea, select, button {
+    margin-top: 8px;
+    padding: 7px;
+}

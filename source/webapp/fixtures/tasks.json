@@ -1,0 +1,5 @@
+[
+    {"model": "webapp.task", "pk": 1, "fields": {"description": "Сделать домашнее задание", "status": "new", "due_date": null}},
+    {"model": "webapp.task", "pk": 2, "fields": {"description": "Повторить Django", "status": "in_progress", "due_date": "2026-10-25"}},
+    {"model": "webapp.task", "pk": 3, "fields": {"description": "Прочитать конспект", "status": "done", "due_date": null}}
+]
