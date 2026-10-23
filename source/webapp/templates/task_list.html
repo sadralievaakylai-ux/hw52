@@ -1,20 +1,22 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>To-Do List</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Список задач{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'task_create' %}">Добавить задачу</a></li>
+{% endblock %}
+
+{% block content %}
     <h1>Список задач</h1>
-    <a href="/tasks/add/">Добавить задачу</a>
+
     {% for task in tasks %}
         <div class="task">
             <p>{{ task.description }}</p>
+            <p><a href="{% url 'task_detail' task.pk %}">Подробнее</a></p>
             <p>Статус: {{ task.get_status_display }}</p>
             <p>Дата выполнения: {{ task.due_date|date:"Y-m-d"|default:"Не указана" }}</p>
-            <form action="/tasks/{{ task.id }}/delete/" method="post">
+
+            <form action="{% url 'task_delete' task.pk %}" method="post">
                 {% csrf_token %}
                 <button type="submit">Удалить</button>
             </form>
@@ -22,5 +24,4 @@
     {% empty %}
         <p>Задач пока нет.</p>
     {% endfor %}
-</body>
-</html>
+{% endblock %}

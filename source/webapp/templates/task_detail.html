@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Task Details{% endblock %}
+
+{% block content %}
+    <h1>Task Details</h1>
+
+    <p>Description: {{ task.description }}</p>
+    <p>Status: {{ task.get_status_display }}</p>
+    <p>Due date: {{ task.due_date|date:"Y-m-d"|default:"Не указана" }}</p>
+
+    <h3>Detailed Description:</h3>
+    <div class="detailed-description">{{ task.detailed_description }}</div>
+
+    <a href="{% url 'task_list' %}">Назад к задачам</a>
+
+{% endblock %}
